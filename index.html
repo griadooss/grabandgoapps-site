@@ -250,6 +250,129 @@
             margin-bottom: 2rem;
         }
 
+        /* Contact Section */
+        .contact {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .contact-info p {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-method {
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-method strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .contact-method a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-method a:hover {
+            color: #5a67d8;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            background: #10b981;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         /* Footer */
         footer {
             background: #1f2937;
@@ -303,6 +426,11 @@
 
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
@@ -422,6 +550,67 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Ready to get started? Have questions? We'd love to hear from you.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <strong>General Inquiries:</strong>
+                            <a href="#" onclick="sendEmail('hello')">hello@grabandgoapps.com</a>
+                        </div>
+                        <div class="contact-method">
+                            <strong>Technical Support:</strong>
+                            <a href="#" onclick="sendEmail('support')">support@grabandgoapps.com</a>
+                        </div>
+                        <div class="contact-method">
+                            <strong>Developer Questions:</strong>
+                            <a href="#" onclick="sendEmail('developer')">developer@grabandgoapps.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="ChatVault Support">ChatVault Support</option>
+                                <option value="Technical Question">Technical Question</option>
+                                <option value="Business Partnership">Business Partnership</option>
+                                <option value="Custom Development">Custom Development</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <!-- Honeypot field for bot protection -->
+                        <div class="form-group" style="display: none;">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -438,7 +627,7 @@
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <p><a href="mailto:hello@grabandgoapps.com">hello@grabandgoapps.com</a></p>
+                    <p><a href="#contact">Get in Touch</a></p>
                     <p><a href="https://github.com/grabandgoapps">GitHub</a></p>
                 </div>
                 <div class="footer-section">
@@ -487,6 +676,60 @@
         document.querySelectorAll('.feature-card, .product-card').forEach(el => {
             observer.observe(el);
         });
+
+        // Email obfuscation function
+        function sendEmail(type = 'hello') {
+            const emails = {
+                'hello': 'hello@grabandgoapps.com',
+                'support': 'support@grabandgoapps.com',
+                'developer': 'developer@grabandgoapps.com'
+            };
+            const email = emails[type] || 'hello@grabandgoapps.com';
+            window.location.href = 'mailto:' + email;
+        }
+
+        // Contact form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            // Disable form and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Get form data
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+            
+            // Check honeypot field
+            if (formData.get('website')) {
+                // Bot detected, silently ignore
+                return;
+            }
+            
+            // For now, just open email client with form data
+            // In production, you'd send this to a server
+            const emailBody = `Name: ${data.name}\nEmail: ${data.email}\nSubject: ${data.subject}\n\nMessage:\n${data.message}`;
+            const emailSubject = `Contact Form: ${data.subject}`;
+            
+            window.location.href = `mailto:hello@grabandgoapps.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Reset form
+            setTimeout(() => {
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                alert('Thank you! Your message has been prepared. Please send the email that opened in your email client.');
+            }, 1000);
+        }
     </script>
 </body>
 </html> 
