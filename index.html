@@ -685,6 +685,11 @@
     </footer>
 
     <script>
+        // Access control check
+        if (sessionStorage.getItem('gagaAccess') !== 'granted') {
+            window.location.href = 'password-protect.html';
+        }
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
