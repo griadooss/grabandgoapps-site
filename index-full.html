@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grab and Go Apps - Deployable tools, without the overhead</title>
+    <meta name="description" content="Modern software development house focused on building lightweight, on-demand SaaS tools for individuals, startups, and small businesses.">
+    <meta name="keywords" content="SaaS tools, web applications, startup tools, business software, lightweight apps">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6b7280;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1f2937;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card h3 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-link:hover {
+            color: #5a67d8;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #1f2937;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .contact-info p {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-method {
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-method strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .contact-method a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-method a:hover {
+            color: #5a67d8;
+        }
+
+        .email-placeholder {
+            color: #6b7280;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            background: #10b981;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-note {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .logo {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#top" class="logo">Grab and Go Apps</a>
+            <ul class="nav-links">
+                <li><a href="#top">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="top" class="hero">
+        <div class="container">
+            <h1 class="fade-in-up">Deployable tools, without the overhead.</h1>
+            <p class="tagline fade-in-up">Modern software development house focused on building lightweight, on-demand SaaS tools</p>
+            <p class="description fade-in-up">We design fast, easy-to-use web applications that require no setup, no friction — just instant utility for individuals, startups, and small businesses.</p>
+            <a href="#products" class="cta-button fade-in-up">Explore Our Tools</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Grab and Go Apps?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Our tools are built for speed and efficiency, delivering instant value without the typical setup overhead.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Zero Configuration</h3>
+                    <p>Deploy and use immediately. No complex setup, no steep learning curves - just pure functionality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Enterprise Ready</h3>
+                    <p>Built with security and scalability in mind, suitable for both individual users and growing businesses.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Scalable Architecture</h3>
+                    <p>Our modular design allows for easy expansion and integration as your needs grow.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Focused Solutions</h3>
+                    <p>Each tool solves a specific problem with precision, avoiding feature bloat and complexity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Future-Proof</h3>
+                    <p>Designed to evolve with your business, supporting both current needs and future growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Tools</h2>
+            <div class="features-grid">
+                <div class="product-card">
+                    <h3>ChatVault</h3>
+                    <p>Secure, multi-tenant chat management system with advanced analytics and export capabilities. Perfect for teams and organizations that need to organize and analyze their communication data.</p>
+                    <a href="#" class="product-link">Learn More →</a>
+                </div>
+                <div class="product-card">
+                    <h3>More Coming Soon</h3>
+                    <p>We're constantly developing new tools to solve real-world problems. Stay tuned for our next releases focused on productivity, analytics, and team collaboration.</p>
+                    <a href="#contact" class="product-link">Get Notified →</a>
+                </div>
+                <div class="product-card">
+                    <h3>Custom Solutions</h3>
+                    <p>Need something specific? We specialize in building custom tools tailored to your exact requirements. Let's discuss your needs.</p>
+                    <a href="#contact" class="product-link">Contact Us →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Grab and Go Apps</h2>
+                <p>We're a modern software development house focused on building lightweight, on-demand SaaS tools for individuals, startups, and small businesses. Our philosophy is simple: create tools that work immediately, scale effortlessly, and solve real problems.</p>
+                <p>Every tool we build is designed with the user in mind - no unnecessary complexity, no hidden costs, just pure utility that gets you from idea to implementation faster than ever before.</p>
+                <p>Whether you're a solo developer, a growing startup, or an established business, our tools are built to grow with you. We believe in the power of focused, well-designed software that does exactly what you need, when you need it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Ready to get started? Have questions? We'd love to hear from you.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <strong>General Inquiries:</strong>
+                            <span class="email-placeholder">Click "Send Message" to contact us</span>
+                        </div>
+                        <div class="contact-method">
+                            <strong>Technical Support:</strong>
+                            <span class="email-placeholder">Use the form for technical questions</span>
+                        </div>
+                        <div class="contact-method">
+                            <strong>Developer Questions:</strong>
+                            <span class="email-placeholder">We'll respond within 24 hours</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="ChatVault Support">ChatVault Support</option>
+                                <option value="Technical Question">Technical Question</option>
+                                <option value="Business Partnership">Business Partnership</option>
+                                <option value="Custom Development">Custom Development</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <!-- Enhanced bot protection -->
+                        <div class="form-group" style="display: none;">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="form-group" style="display: none;">
+                            <input type="email" name="confirm_email" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="human_check">Human Check *</label>
+                            <select id="human_check" name="human_check" required>
+                                <option value="">Select an option</option>
+                                <option value="human">I am a human</option>
+                                <option value="robot">I am a robot</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                        <p class="form-note">We respect your privacy. Your information will only be used to respond to your inquiry.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Grab and Go Apps</h3>
+                    <p>Deployable tools, without the overhead.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <p><a href="#">ChatVault</a></p>
+                    <p><a href="#">Coming Soon</a></p>
+                    <p><a href="#">Custom Solutions</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><a href="#contact">Get in Touch</a></p>
+                    <p><a href="https://github.com/grabandgoapps">GitHub</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">API Reference</a></p>
+                    <p><a href="#">Support</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Grab and Go Apps. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Access control check
+        if (sessionStorage.getItem('gagaAccess') !== 'granted') {
+            window.location.href = 'password-protect.html';
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation to elements as they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards and product cards
+        document.querySelectorAll('.feature-card, .product-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Email obfuscation function
+        function sendEmail(type = 'hello') {
+            const emails = {
+                'hello': 'hello@grabandgoapps.com',
+                'support': 'support@grabandgoapps.com',
+                'developer': 'developer@grabandgoapps.com'
+            };
+            const email = emails[type] || 'hello@grabandgoapps.com';
+            window.location.href = 'mailto:' + email;
+        }
+
+        // Rate limiting for form submissions
+        let lastSubmission = 0;
+        const SUBMISSION_COOLDOWN = 30000; // 30 seconds
+
+        // Contact form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Rate limiting check
+            const now = Date.now();
+            if (now - lastSubmission < SUBMISSION_COOLDOWN) {
+                alert('Please wait 30 seconds before submitting another message.');
+                return;
+            }
+            
+            const form = event.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            // Disable form and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Get form data
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+            
+            // Enhanced bot detection
+            if (formData.get('website') || formData.get('confirm_email')) {
+                // Bot detected, silently ignore
+                return;
+            }
+            
+            // Check human verification
+            if (formData.get('human_check') !== 'human') {
+                alert('Please confirm you are human.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                return;
+            }
+            
+            // For now, just open email client with form data
+            // In production, you'd send this to a server
+            const emailBody = `Name: ${data.name}\nEmail: ${data.email}\nSubject: ${data.subject}\n\nMessage:\n${data.message}`;
+            const emailSubject = `Contact Form: ${data.subject}`;
+            
+            window.location.href = `mailto:hello@grabandgoapps.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Update rate limiting
+            lastSubmission = now;
+            
+            // Reset form
+            setTimeout(() => {
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                alert('Thank you! Your message has been prepared. Please send the email that opened in your email client.');
+            }, 1000);
+        }
+    </script>
+</body>
+</html> 
