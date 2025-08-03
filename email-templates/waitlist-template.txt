@@ -1,0 +1,38 @@
+Subject: Added to Grab and Go Apps Priority Waitlist
+
+Hi [NAME],
+
+Thank you for your interest in Grab and Go Apps! We've added you to our priority waitlist for early access.
+
+What This Means:
+- You'll be among the first to know when we launch new features
+- You'll get early access before the general public
+- We'll keep you updated on our development progress
+- You'll have priority consideration for future access
+
+Our Development Timeline:
+- Current Phase: Final development and testing
+- Early Access Rollout: [DATE]
+- Public Launch: [DATE]
+- You'll be notified as soon as access is available
+
+What We're Building:
+- ChatVault: Secure, multi-tenant chat management
+- Additional tools in development
+- Enterprise-ready features
+- Scalable architecture for growing teams
+
+Stay Connected:
+- Follow our progress: https://github.com/grabandgoapps
+- Check our website: https://grabandgoapps.com
+- Contact us: hello@grabandgoapps.com
+
+We'll be in touch soon with your early access credentials!
+
+Best regards,
+The Grab and Go Apps Team
+hello@grabandgoapps.com
+
+---
+Grab and Go Apps
+"Deployable tools, without the overhead." 
