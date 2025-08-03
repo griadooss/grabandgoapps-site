@@ -54,6 +54,11 @@
             font-weight: 700;
             color: #1f2937;
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #667eea;
         }
 
         .nav-links {
@@ -447,6 +452,16 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .logo {
+                font-size: 1.25rem;
+            }
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -468,8 +483,9 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <a href="#" class="logo">Grab and Go Apps</a>
+            <a href="#top" class="logo">Grab and Go Apps</a>
             <ul class="nav-links">
+                <li><a href="#top">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#about">About</a></li>
@@ -479,7 +495,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="top" class="hero">
         <div class="container">
             <h1 class="fade-in-up">Deployable tools, without the overhead.</h1>
             <p class="tagline fade-in-up">Modern software development house focused on building lightweight, on-demand SaaS tools</p>
