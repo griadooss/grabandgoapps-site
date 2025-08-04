@@ -1,0 +1,40 @@
+# LibreOffice Calc Template for Early Access Leads Tracking
+# Save this as "Early Access Leads.ods"
+
+# Column Headers (Row 1):
+# A1: Name
+# B1: Email
+# C1: Company
+# D1: Date
+# E1: Status
+# F1: Response Type
+# G1: Follow-up Date
+# H1: Notes
+
+# Sample Data (Rows 2-4):
+# A2: John Doe
+# B2: john@example.com
+# C2: Example Corp
+# D2: 2024-01-01
+# E2: Contacted
+# F2: Immediate Access
+# G2: 2024-01-08
+# H2: Technical team - perfect fit
+
+# A3: Jane Smith
+# B3: jane@startup.com
+# C3: Startup Inc
+# D3: 2024-01-02
+# E3: Contacted
+# F3: Waitlist
+# G3: 2024-01-09
+# H3: Good potential - needs more info
+
+# A4: Bob Wilson
+# B4: bob@company.com
+# C4: Company LLC
+# D4: 2024-01-03
+# E4: Contacted
+# F4: Future Consideration
+# G4: 2024-01-10
+# H4: Not ready yet - keep in mind 
