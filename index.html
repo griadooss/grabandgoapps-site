@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grab and Go Apps - Access Required</title>
+    <title>Grab and Go Apps - Coming Soon</title>
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -18,132 +18,71 @@
         
         .container {
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
             padding: 2rem;
         }
         
         h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
         
-        .login-form {
+        .tagline {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .status {
             background: rgba(255, 255, 255, 0.1);
             padding: 2rem;
             border-radius: 12px;
             backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
         }
         
-        .form-group {
-            margin-bottom: 1.5rem;
+        .status h2 {
+            margin-bottom: 1rem;
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1rem;
-        }
-        
-        .form-group input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #10b981;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-        }
-        
-        .submit-btn {
-            background: #10b981;
-            color: white;
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        .submit-btn:hover {
-            background: #059669;
-            transform: translateY(-1px);
-        }
-        
-        .error {
-            color: #f87171;
-            margin-top: 1rem;
-            display: none;
+        .status p {
+            opacity: 0.8;
+            line-height: 1.6;
         }
         
         .contact {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
         }
         
         .contact a {
             color: #10b981;
             text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Grab and Go Apps</h1>
-        <p>Access to our development site requires authorization.</p>
+        <p class="tagline">Deployable tools, without the overhead.</p>
         
-        <div class="login-form">
-            <form id="accessForm" onsubmit="checkAccess(event)">
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter access password" required>
-                </div>
-                <button type="submit" class="submit-btn">Access Site</button>
-            </form>
-            <div id="error" class="error">Incorrect password. Please try again.</div>
+        <div class="status">
+            <h2>🚧 Under Development</h2>
+            <p>We're currently building and testing our platform to ensure the best experience for our users. Our team is working hard to bring you lightweight, on-demand SaaS tools that require no setup and no friction.</p>
         </div>
         
         <div class="contact">
-            <p>Need access? <a href="mailto:hello@grabandgoapps.com">Contact us</a></p>
+            <h3>Interested in Early Access?</h3>
+            <p>We're carefully selecting our initial users to ensure quality feedback and smooth scaling. If you're interested in being an early adopter, please reach out to us.</p>
+            <p><a href="mailto:hello@grabandgoapps.com">Contact us for early access</a></p>
         </div>
     </div>
-
-    <script>
-        function checkAccess(event) {
-            event.preventDefault();
-            
-            const password = document.getElementById('password').value;
-            const error = document.getElementById('error');
-            
-            // Simple password check - you can change this
-            if (password === 'gaga2024' || password === 'devaccess') {
-                // Store access in session storage
-                sessionStorage.setItem('gagaAccess', 'granted');
-                // Redirect to main site
-                window.location.href = 'index-full.html';
-            } else {
-                error.style.display = 'block';
-                document.getElementById('password').value = '';
-            }
-        }
-        
-        // Check if already authenticated
-        if (sessionStorage.getItem('gagaAccess') === 'granted') {
-            window.location.href = 'index-full.html';
-        }
-    </script>
 </body>
 </html> 
